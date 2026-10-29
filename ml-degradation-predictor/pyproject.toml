@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "degradation-risk"
+version = "1.0.0"
+description = "Predict future performance degradation of a deployed ML model from monitoring signals"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "scipy", "scikit-learn", "matplotlib", "joblib"]
+
+[project.optional-dependencies]
+app = ["streamlit", "fastapi", "uvicorn", "httpx"]
+dev = ["pytest"]
+xgboost = ["xgboost"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::FutureWarning", "ignore::UserWarning"]
